@@ -9,8 +9,7 @@ h = h / M;
 
 x_next = x0;
 for i=1:M
-    x_next = x_next + h * ode(h, x_next, u, param);
+    x_next = x_next + h * ode(h, x_next);
 end
-x_next(3) = wrapToPi(x_next(3));
 
 end
