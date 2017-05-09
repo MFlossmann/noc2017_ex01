@@ -9,7 +9,7 @@ x_sim = zeros(m,N);
 x_sim(:,1) = x0;
 
 for i = 2:N
-    x_sim(:,i) = x_sim(:,i-1) + xdot(i*h, x_sim(:,i-1));
+    x_sim(:,i) = x_sim(:,i-1) + h*xdot(i*h, x_sim(:,i-1));
 end
 
 x_sim = x_sim';
