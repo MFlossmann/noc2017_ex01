@@ -31,16 +31,29 @@ clear all;
 
 import casadi.*;
 
-x = SX.sym('x',1,2);
+T = 19;
+DT = 0.5;
+N = T/DT;
 
-f = Function('f', {x}, {[x(2), -0.2*x(2) - x(1)]});
+x = MX.sym('x',1,2);
 
-x0 = SX([1,2]);
+xdot = [x(2); -0.2*x(2) - x(1)]; % symbolic representation of xdot
 
-T = SX(19);
-h = SX(0.5);
+% Runge-Kutta4
 
-rk4 = Function('rk4', {T, h, x, x0},...
-               {git p},...
-               {'T', 'h', 'x', 'x0'},...
-               {'x_sim'});
+   
+   f = Function('f', {x}, {xdot}); % function for applying xdot
+   X0 = MX.sym('X0', 2);
+   X = MX.sym('X',N,2);
+   X(1,:) = X0;
+   %%
+   for i=2:N
+       k1 = f(X(i,:));
+       k2 = f(X(i,:) + DT/2 * k1);
+       k3 = f(X(i,:) + DT/2 * k2);
+       k4 = f(X(i,:) + DT * k3);
+       X(i,:)=X(i-1,:) + DT/6*(k1 +2*k2 +2*k3 +k4);
+    end
+    F = Function('F', {X0}, {X}, {'x0'}, {'x'});
+ 
+ foo = F('x0', [1;0]);
