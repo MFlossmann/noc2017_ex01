@@ -11,12 +11,12 @@ w(:,1) = initial_value;
 v(:,1) = initial_value;
 
 for i=1:1:iteration_length
-    [grad_w,hess_w] = ex2_1_function(w(1,i),w(2,i));
+    [grad_w,hess_w] = gradientHessianFunction(w(1,i),w(2,i));
     w(:,i+1)=w(:,i)-hess_w^(-1)*grad_w;
 end
 
 for i=1:1:iteration_length
-    grad_v = ex2_1_function(v(1,i),v(2,i));
+    grad_v = gradientHessianFunction(v(1,i),v(2,i));
     v(:,i+1)= v(:,i)-approx_hess*grad_v;
 end
 
