@@ -3,8 +3,9 @@ function [ dx ] = ode( x )
 % parameters
 d1 = 0.1;
 d2 = 0.5;
+
 g = 9.81;
-w = 1;
+w = 2;
 M = 1;
 
 % x_dot = f(x)
