@@ -13,7 +13,7 @@
 %
 %     CasADi is distributed in the hope that it will be useful,
 %     but WITHOUT ANY WARRANTY; without even the implied warranty of
-%a     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+%     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 %     Lesser General Public License for more details.
 %
 %     You should have received a copy of the GNU Lesser General Public
@@ -57,7 +57,6 @@ figure()
 n_points = 50;
 range = 2;
 
-%%
 x_v = linspace(x_opt(1) - 2*range,  x_opt(1) + range,n_points);
 y_v = linspace(x_opt(2) - 2*range,  x_opt(2) + 2*range,n_points);
 
