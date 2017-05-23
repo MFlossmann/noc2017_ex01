@@ -11,8 +11,8 @@ approx_inv = inv(approx_hess);
 % v: approximated hessian
 w = zeros(2,iteration_length);
 v = zeros(2,iteration_length);
-w(:,1) = initial_value;
-v(:,1) = initial_value;
+w(:,1) = initial_value(:);
+v(:,1) = initial_value(:);
 
 for i=1:1:iteration_length
     w(:,i+1)= w(:,i) - inv(rosenbrock_hessian(w(1,i),w(2,i)))...
@@ -26,7 +26,7 @@ end
 fig1 = figure;
 hold on;
 plot(v(1,:),v(2,:), 'rx-');
-plot(w(2,:),w(2,:), 'b+-');
+plot(w(1,:),w(2,:), 'b+-');
 legend('M=\rho I','M=\nabla^2 f(x,y)')
 hold off;
 
@@ -43,7 +43,7 @@ F = (1-x(1))^2 + 100*(x(2) - x(1)^2)^2;
 grad = Function('grad', {x}, {jacobian(F,x)});
 H = Function('H', {x}, {hessian(F,x)});
 
-u0 = DM([1, 1.1]);
+u0 = DM([1; 1.1]);
 u = DM(2,iteration_length);
 
 u(:,1) = u0;

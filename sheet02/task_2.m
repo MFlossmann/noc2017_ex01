@@ -14,7 +14,7 @@ toc
 % J is the distance between the projectiles
 J = norm(p_T(1:2) - p_T(3:4));
 %%
-% Restrictions: the z coordinates have to be > 0
+% Constraints: the z coordinates have to be > 0
 g = [norm(v(1:2)),... % maximum velocity amount
      norm(v(3:4)),... % 
      p_T(2),...
