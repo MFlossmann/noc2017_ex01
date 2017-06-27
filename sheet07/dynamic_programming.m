@@ -48,7 +48,8 @@ for i = 1:N_x1
         x = [x1_values(i); x2_values(j)];
         % INSERT YOUR CODE HERE:
         LQR_cost(i,j) = x'*P*x;
-        LQR_u(i,j) = -K*x;
+        LQR_u(i,j) = u_LQR = min(10,max(-10,...
+                                        -K*x));
     end
 end
 
@@ -109,7 +110,7 @@ for k = N-1:-1:1
     drawnow
     
     subplot(212);
-    surf(X1.', X2.', u_map; hold on;
+    surf(X1.', X2.', u_map); hold on;
     plot3(X1.', X2.', LQR_u,'--r');
     xlabel('x_1'); ylabel('x_2'); zlabel('u_{map}');
     zlim([-u_max; u_max])
