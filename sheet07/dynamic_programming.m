@@ -48,8 +48,8 @@ for i = 1:N_x1
         x = [x1_values(i); x2_values(j)];
         % INSERT YOUR CODE HERE:
         LQR_cost(i,j) = x'*P*x;
-        LQR_u(i,j) = u_LQR = min(10,max(-10,...
-                                        -K*x));
+        LQR_u(i,j) = min(10,max(-10,...
+                                -K*x));
     end
 end
 
