@@ -10,9 +10,9 @@ B = output.sensU;
 % design LQR controller
 % INSERT YOUR CODE HERE:
 %[K,P] = ...;
-P = Q;
-tmp = (R + B'*P*B);
-K = tmp\(B'*P*A);
+%P = Q;
+%tmp = (R + B'*P*B);
+%K = tmp\(B'*P*A);
 
 [K, S] = dlqr(A, B, Q, R, 0);
 

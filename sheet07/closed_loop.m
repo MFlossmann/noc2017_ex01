@@ -2,7 +2,7 @@ clc;
 clear all;
 close all;
 
-clip_LQR = 0;
+clip_LQR = 1;
 
 input.sens = 0; % no sensitivities are needed here
 x0 = [pi; 0];
@@ -36,7 +36,7 @@ while time(end) < Tf
     % INSERT YOUR CODE HERE:
     u_LQR = -K*state_LQR(:,end);
     if (clip_LQR ==1)
-        min(10,max(-10,u_LQR));
+        u_LQR = min(10,max(-10,u_LQR));
     end
     us_LQR = [us_LQR u_LQR];
     
@@ -52,7 +52,7 @@ while time(end) < Tf
     % INSERT YOU CODE HERE:
     i1 = project(state_DP(1,end), x1_values); 
     i2 = project(state_DP(2,end), x2_values);
-    u_DP = u_values(u_map(i1,i2));
+    u_DP = u_map(i1,i2);
         
     us_DP = [us_DP u_DP];
     cost_DP = [cost_DP cost_DP(end)+u_DP.'*R*u_DP+state_DP(:,end).'*Q*state_DP(:,end)];
