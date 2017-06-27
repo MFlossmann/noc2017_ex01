@@ -89,7 +89,7 @@ for k = N-1:-1:1
                     % Equation (8.4)
                     %P_new = Q + A'*P*A - (S'+A'*P*B)*K;
                     J_new(i1,i2) = cost;
-                    u_map(i1,i2) = j;
+                    u_map(i1,i2) = u_k;
                 end % end if cost < J_new
             end % end for j
         end % end for i2
@@ -109,7 +109,7 @@ for k = N-1:-1:1
     drawnow
     
     subplot(212);
-    surf(X1.', X2.', u_map); hold on;
+    surf(X1.', X2.', u_map; hold on;
     plot3(X1.', X2.', LQR_u,'--r');
     xlabel('x_1'); ylabel('x_2'); zlabel('u_{map}');
     zlim([-u_max; u_max])
